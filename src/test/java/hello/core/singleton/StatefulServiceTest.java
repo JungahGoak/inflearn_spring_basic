@@ -17,13 +17,13 @@ class StatefulServiceTest {
         StatefulService statefulService2 = ac.getBean(StatefulService.class);
 
         //Thread: A 사용자가 10000원 주문
-        statefulService1.order("userA", 10000);
+        int price = statefulService1.order("userA", 10000);
         //Thread: B 사용자가 20000원 주문
         statefulService2.order("userB", 20000);
 
         //Thread A: 사용자A 주문 금액 조회 -> 20000원이 출력됨
         //stateless로 설계해야하는 이유
-        int price = statefulService1.getPrice();
+//        int price = statefulService1.getPrice();
         System.out.println("price = " + price);
 
 
