@@ -35,15 +35,15 @@ public class OrderServiceTest {
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
 
-    @Test
-    void fieldInjectionTest(){
-        OrderServiceImpl orderService = new OrderServiceImpl();
-
-        //setter 필요... -> 이럴바엔 setter에 @Autowired해라!
-        orderService.setDiscountPolicy(new RateDiscountPolicy());
-        orderService.setMemberRepository(new MemoryMemberRepository());
-
-        orderService.createOrder(1L, "itemA", 10000);
-    }
+//    @Test
+//    void fieldInjectionTest(){
+//        OrderServiceImpl orderService = new OrderServiceImpl();
+//
+//        //setter 필요... -> 이럴바엔 setter에 @Autowired해라!
+//        orderService.setDiscountPolicy(new RateDiscountPolicy());
+//        orderService.setMemberRepository(new MemoryMemberRepository());
+//
+//        orderService.createOrder(1L, "itemA", 10000);
+//    }
 }
 
