@@ -16,12 +16,26 @@ public class OrderServiceImpl implements OrderService {
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     // 해결방안: 클라이언트의 OrderServiceImpl에 DiscountPolicy와 구현객체를 대신 생성하고 주입해주어야함
-    private final DiscountPolicy discountPolicy;
-    private final MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+    private MemberRepository memberRepository;
+
+    //setter 주입
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository){
+        System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy){
+        System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
 
     //생성자 주입: 생성자 호출시점에서 딱 1번만 호출되는 것이 보장, 불변 필수 의존관계에서 사용
-    @Autowired
+    //@Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("1. OrderServiceImpl.OrderServiceImpl");
         this.discountPolicy = discountPolicy;
         this.memberRepository = memberRepository;
     }
