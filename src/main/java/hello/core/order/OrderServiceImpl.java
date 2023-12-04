@@ -19,7 +19,7 @@ public class OrderServiceImpl implements OrderService {
     private DiscountPolicy discountPolicy;
     private MemberRepository memberRepository;
 
-    //setter 주입
+    //setter 주입: 선택적(@Autowired(required = false)), 변경가능한 주입값
     @Autowired
     public void setMemberRepository(MemberRepository memberRepository){
         System.out.println("memberRepository = " + memberRepository);
