@@ -34,11 +34,10 @@ public class AppConfig {
         return new MemoryMemberRepository();
     }
 
-
     @Primary
     @Bean
     public OrderService orderService(){
-        return new OrderServiceImpl(memberRepository(), getDiscountPolicy());
+        return new OrderServiceImpl(getDiscountPolicy(), memberRepository());
         //return null;
     }
 
