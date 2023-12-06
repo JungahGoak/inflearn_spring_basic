@@ -37,7 +37,7 @@ public class AppConfig {
     @Primary
     @Bean
     public OrderService orderService(){
-        return new OrderServiceImpl(getDiscountPolicy(), memberRepository());
+        return new OrderServiceImpl(memberRepository(), getDiscountPolicy());
         //return null;
     }
 

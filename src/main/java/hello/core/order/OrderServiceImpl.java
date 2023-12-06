@@ -1,6 +1,7 @@
 package hello.core.order;
 
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
@@ -13,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -22,12 +23,12 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
     private final MemberRepository memberRepository;
 
-//    //생성자 주입: 생성자 호출시점에서 딱 1번만 호출되는 것이 보장, 불변 필수 의존관계에서 사용
-//    @Autowired
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.discountPolicy = discountPolicy;
-//        this.memberRepository = memberRepository;
-//    }
+    //생성자 주입: 생성자 호출시점에서 딱 1번만 호출되는 것이 보장, 불변 필수 의존관계에서 사용
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+        this.memberRepository = memberRepository;
+    }
 
 //    //매소드 주입: 생성자 주입이나 그게그거...
 //    @Autowired
